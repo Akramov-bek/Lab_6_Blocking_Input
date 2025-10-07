@@ -18,7 +18,7 @@ public class CtoFConverter {
                 fahrenheit = (celsius * 9 / 5) + 32;
                 System.out.printf("%.1f degrees Celsius is %.1f degrees Fahrenheit.", celsius, fahrenheit);
             } else {
-
+                trash = in.nextLine();
                 System.out.println("Illegal number: " + trash + " Please enter a valid number.");
             }
         } while (!done);
