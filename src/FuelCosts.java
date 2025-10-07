@@ -16,7 +16,8 @@ public class FuelCosts
 
         do {
             System.out.print("Enter the tank size of the gas in gallons: ");
-            if (in.hasNextDouble()) {
+            if (in.hasNextDouble())
+            {
                 tankSize = in.nextDouble();
                 in.nextLine();  // Clear the newline from the buffer
                 if (tankSize <= 0)
@@ -34,8 +35,57 @@ public class FuelCosts
             }
         } while (!done);
 
+        done = false; // reset for next input
 
+        do {
+            System.out.print("Enter the size of the miler per gallon: ");
+            if (in.hasNextDouble())
+            {
+                mpg = in.nextDouble();
+                in.nextLine();  // Clear the newline from the buffer
+                if (mpg <= 0)
+                {
+                    System.out.println("MPG must be greater than zero. Please try again.");
+                } else
+                {
+                    done = true;
+                }
+            }
+            else // Not a number
+            {
+                trash = in.nextLine();
+                System.out.println("Illegal number: " + trash + ". Please enter a valid number.");
+            }
+        } while (!done);
 
+        done = false; // reset for next input
+
+        do {
+            System.out.print("Enter the price per gallon: ");
+            if (in.hasNextDouble())
+            {
+                pricePerGal = in.nextDouble();
+                in.nextLine();  // Clear the newline from the buffer
+                if (pricePerGal <= 0)
+                {
+                    System.out.println("Price per gallon must be greater than zero. Please try again.");
+                } else
+                {
+                    done = true;
+                }
+            }
+            else // Not a number
+            {
+                trash = in.nextLine();
+                System.out.println("Illegal number: " + trash + ". Please enter a valid number.");
+            }
+        } while (!done);
+
+        miles100Cost = (100 / mpg) * pricePerGal;
+        fullTankDistance = tankSize * mpg;
+
+        System.out.printf("The cost to drive 100 miles is $%.2f\n", miles100Cost);
+        System.out.printf("The distance that can be driven on a full tank is %.1f miles\n", fullTankDistance);
     }
 
 }
